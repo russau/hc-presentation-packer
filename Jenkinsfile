@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                sh 'packer build -var 'region=${DEST_REGION}' packer.json'
+                sh 'packer build -var "region=${DEST_REGION}" packer.json'
                 archiveArtifacts artifacts: 'output/**'
             }
         }
