@@ -4,15 +4,16 @@ pipeline {
         stage('Test') {
             steps {
                 sh 'env'
-                sh 'echo "1..2" >> tests.tap'
-                sh 'echo "ok 1 - ngnix okay" >> tests.tap'
-                sh 'echo "ok 2 - certifcate happy" >> tests.tap'
+                sh 'echo "1..2" > output/tests.tap'
+                sh 'echo "ok 1 - ngnix okay" > output/tests.tap'
+                sh 'echo "ok 2 - certificate happy" >> output/tests.tap'
+                archiveArtifacts artifacts: 'output/**'
             }
         }
     }
     post {
       always {
-          step([$class: "TapPublisher", testResults: "tests.tap"])
+          step([$class: "TapPublisher", testResults: "output/tests.tap"])
       }
     }
 }
