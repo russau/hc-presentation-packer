@@ -1,0 +1,48 @@
+{
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "profile": "default",
+      "region": "{{user `region`}}",
+      "source_ami_filter": {
+        "filters": {
+          "virtualization-type": "hvm",
+          "name": "ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-*",
+          "root-device-type": "ebs"
+        },
+        "owners": [
+          "099720109477"
+        ],
+        "most_recent": true
+      },
+      "instance_type": "t2.medium",
+      "ssh_username": "ubuntu",
+      "ami_name": "nginx-demo-{{isotime | clean_resource_name}}",
+      "tags": {
+        "Name": "nginx-demo"
+      },
+      "subnet_id" : "subnet-55708d30" 
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "file",
+      "source": "./home_dir/",
+      "destination": "/home/ubuntu/"
+    },
+    {
+      "type": "shell",
+      "script": "./installer.sh"
+    },
+    {
+      "type": "shell",
+      "inline": [ "/home/ubuntu/testing/tests.sh" ]
+    },
+    {
+      "type": "file",
+      "source": "/home/ubuntu/output/",
+      "destination": ".",
+      "direction": "download"
+    }
+  ]
+}
