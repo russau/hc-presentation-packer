@@ -1,4 +1,7 @@
 {
+  "variables": {
+    "git_commit": "{{env `GIT_COMMIT`}}"
+  },
   "builders": [
     {
       "type": "amazon-ebs",
@@ -32,7 +35,8 @@
     },
     {
       "type": "shell",
-      "script": "./installer.sh"
+      "script": "./installer.sh",
+      "environment_vars": [ "GIT_COMMIT={{ user `git_commit`}}" ]
     },
     {
       "type": "shell",
