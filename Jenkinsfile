@@ -7,9 +7,9 @@ pipeline {
         string(name: 'DEST_REGION', defaultValue: 'ap-southeast-2', description: 'Destination Region')
     }
     stages {
-        stage('Test') {
+        stage('Build') {
             steps {
-                sh 'packer build -var "region=${DEST_REGION}" packer.json -color=false'
+                sh 'packer build -var "region=${DEST_REGION}" packer.json'
                 archiveArtifacts artifacts: 'output/**'
             }
         }
