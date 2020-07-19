@@ -9,6 +9,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                copyArtifacts(projectName: 'hc-presentation-terraform');
                 sh 'packer build -var "region=${DEST_REGION}" packer.json'
                 archiveArtifacts artifacts: 'output/**'
             }
