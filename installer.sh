@@ -14,7 +14,7 @@ libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxc
 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 lsb-release \
 wget xdg-utils 
 
-sudo apt install -y npm
+sudo apt install -y npm awscli
 
 # browser screenshot utility
 sudo npm install --global pageres-cli

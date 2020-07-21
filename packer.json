@@ -45,6 +45,11 @@
       "destination": "/home/ubuntu/"
     },
     {
+      "type": "file",
+      "source": "./certs/{{user `region`}}/",
+      "destination": "/home/ubuntu/"
+    },
+    {
       "type": "shell",
       "script": "./installer.sh",
       "environment_vars": [ "GIT_COMMIT={{ user `git_commit`}}" ]
