@@ -24,7 +24,18 @@
       "tags": {
         "Name": "nginx-demo"
       },
-      "subnet_id" : "subnet-55708d30" 
+      "subnet_filter": {
+        "filters": {
+          "tag:Class": "packer"
+        },
+        "most_free": true,
+        "random": false
+      },
+      "vpc_filter": {
+        "filters": {
+          "tag:Class": "packer"
+        }
+      }
     }
   ],
   "provisioners": [
