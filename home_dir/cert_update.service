@@ -1,0 +1,12 @@
+[Unit]
+Description=Cert Update
+Before=nginx.service
+
+[Service]
+Type=oneshot
+ExecStart=/home/ubuntu/cert_update.sh
+RemainAfterExit=true
+StandardOutput=journal
+
+[Install]
+WantedBy=multi-user.target

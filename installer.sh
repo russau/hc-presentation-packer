@@ -25,4 +25,8 @@ sudo apt-get install -y bats
 # setup the webserver
 sudo apt install -y nginx 
 
+# certificate installer unit file
+sudo cp cert_update.service /etc/systemd/system/
+sudo systemctl enable cert_update.service
+
 cat /home/ubuntu/app/index.html | envsubst | sudo tee /var/www/html/index.html
